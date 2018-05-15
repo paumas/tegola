@@ -36,9 +36,11 @@ do
 		fi
 		if [[ $GOOS == windows ]]; then 
 			FILENAME="${FILENAME}.exe"
+			CC_FOR_TARGET=x86_64-w64-mingw32-gcc
+			export CC_FOR_TARGET
 		fi
 
-		GOOS=${GOOS} GOARCH=${GOARCH} CGO_ENABLED=${CGO_ENABLED} go build -ldflags "${LDFLAGS}" -o ${FILENAME} github.com/go-spatial/tegola/cmd/tegola
+		GOCACHE=off GOOS=${GOOS} GOARCH=${GOARCH} CGO_ENABLED=${CGO_ENABLED} go build -ldflags "${LDFLAGS}" -o ${FILENAME} github.com/go-spatial/tegola/cmd/tegola
 		chmod a+x ${FILENAME}
 		dir=$(dirname $FILENAME)
 		fn=$(basename $FILENAME)
