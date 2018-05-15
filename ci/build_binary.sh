@@ -29,13 +29,15 @@ do
 		FILENAME="${TRAVIS_BUILD_DIR}/releases/tegola_${GOOS}_${GOARCH}"
 		if [[ "$CGO_ENABLED" != "0" ]]; then
 			echo "CGO_ENABLED: $CGO_ENABLED"
+			CGO_ENABLED=1
+			export CGO_ENABLED
 			FILENAME="${FILENAME}_cgo"
 		fi
 		if [[ $GOOS == windows ]]; then 
 			FILENAME="${FILENAME}.exe"
 		fi
 
-		GOOS=${GOOS} GOARCH=${GOARCH} go build -ldflags "${LDFLAGS}" -o ${FILENAME} github.com/go-spatial/tegola/cmd/tegola
+		GOOS=${GOOS} GOARCH=${GOARCH} CGO_ENABLED=${CGO_ENABLED} go build -ldflags "${LDFLAGS}" -o ${FILENAME} github.com/go-spatial/tegola/cmd/tegola
 		chmod a+x ${FILENAME}
 		dir=$(dirname $FILENAME)
 		fn=$(basename $FILENAME)
