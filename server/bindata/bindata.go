@@ -110,7 +110,7 @@ func staticCssTegolaCss() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/css/tegola.css", size: 2886, mode: os.FileMode(420), modTime: time.Unix(1510460395, 0)}
+	info := bindataFileInfo{name: "static/css/tegola.css", size: 2886, mode: os.FileMode(420), modTime: time.Unix(1526412648, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -170,7 +170,7 @@ func staticJsTegolaJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/js/tegola.js", size: 6307, mode: os.FileMode(420), modTime: time.Unix(1522808163, 0)}
+	info := bindataFileInfo{name: "static/js/tegola.js", size: 6307, mode: os.FileMode(420), modTime: time.Unix(1526412648, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
