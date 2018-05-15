@@ -3,6 +3,8 @@
 # This script will build the necessary binaries for tegola.
 ################################################################################
 
+set -e
+
 OLDDIR=$(pwd)
 VERSION_TAG=$TRAVIS_TAG
 if [ -z "$VERSION_TAG" ]; then 
@@ -29,9 +31,8 @@ do
 		FILENAME="${TRAVIS_BUILD_DIR}/releases/tegola_${GOOS}_${GOARCH}"
 		if [[ "$CGO_ENABLED" != "0" ]]; then
 			echo "CGO_ENABLED: $CGO_ENABLED"
-			CGO_ENABLED=1
-			export CGO_ENABLED
 			FILENAME="${FILENAME}_cgo"
+			LDFLAGS="${LDFLAGS} -linkmode external -extldflags -static"
 		fi
 		if [[ $GOOS == windows ]]; then 
 			FILENAME="${FILENAME}.exe"
