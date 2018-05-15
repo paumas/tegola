@@ -26,7 +26,7 @@ echo "building bins into ${TRAVIS_BUILD_DIR}/releases"
 
 for GOARCH in amd64
 do
-	for GOOS in darwin linux windows
+	for GOOS in linux windows darwin
 	do
 		FILENAME="${TRAVIS_BUILD_DIR}/releases/tegola_${GOOS}_${GOARCH}"
 		if [[ "$CGO_ENABLED" != "0" ]]; then
